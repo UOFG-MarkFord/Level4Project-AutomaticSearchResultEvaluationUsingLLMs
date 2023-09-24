@@ -1,9 +1,9 @@
 # Timelog
 
-* PROJECT NAME
-* YOUR NAME
-* STUDENT_ID
-* SUPERVISOR NAME
+* Automatic Search Result Evaluation using LLMs
+* Mark Ford
+* 2551132F
+* Sean MacAveney
 
 ## Guidance
 
