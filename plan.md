@@ -1,17 +1,21 @@
 # Plan
 
-* PROJECT TITLE
-* YOUR NAME
-* STUDENT ID
-* SUPERVISOR NAME
+* Automatic Search Result Evaluation using LLMs
+* Mark Ford
+* 2551132F
+* Sean MacAveney
 
 Week-by-week plan for the whole project. Update this as you go along.
 
 ## Winter semester
 
 * **Week 1**
+Schedule a kickoff meeting with the supervisor to outline goals and objectives.
 * **Week 2**
+Set up GitHub repository and clone the master template.
+Begin a deep dive into existing research about LLMs and their use in search result evaluation.
 * **Week 3**
+Continue Research
 * **Week 4**
 * **Week 5**
 * **Week 6**
