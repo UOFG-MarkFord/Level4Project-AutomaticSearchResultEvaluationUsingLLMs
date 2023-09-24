@@ -10,12 +10,17 @@ Week-by-week plan for the whole project. Update this as you go along.
 ## Winter semester
 
 * **Week 1**
-Schedule a kickoff meeting with the supervisor to outline goals and objectives.
+- Schedule a kickoff meeting with the supervisor to outline goals and objectives.
 * **Week 2**
-Set up GitHub repository and clone the master template.
-Begin a deep dive into existing research about LLMs and their use in search result evaluation.
+- Set up GitHub repository and clone the master template.
+- Begin a deep dive into existing research about LLMs and their use in search result evaluation.
 * **Week 3**
-Continue Research
+- Continue Research
+- Design Experiments: Based on at least one of the questions raised from "One-Shot Labeling for Automatic Relevance Estimation":
+1. Design an experiment to test the efficacy of LLMs on long documents.
+2. Outline methods to handle scenarios with multiple known relevant documents.
+3. Propose strategies for utilizing known non-relevant documents as signals.
+
 * **Week 4**
 * **Week 5**
 * **Week 6**
