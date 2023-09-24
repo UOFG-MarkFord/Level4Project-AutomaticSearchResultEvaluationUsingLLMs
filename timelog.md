@@ -20,12 +20,12 @@
 
 ### 18 Sep 2023
 
-* *2 hour* Preparing resources for supervisor meeting
+* *2 hours* Preparing resources for supervisor meeting
 
 ## Week 2
 
 ### 24 Sep 2023
 
-* *6 hour* Researching relevant papers
-* *30 min* Downloading appropriate tools e.g. Endnote
-*  *30 min* Setting up GitHub with the appropriate template and filling out time-tracking files
+* *6 hours* Researching relevant papers
+* *30 mins* Downloading appropriate tools e.g. Endnote
+*  *30 mins* Setting up GitHub with the appropriate template and filling out time-tracking files
