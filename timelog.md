@@ -14,13 +14,18 @@
 
 ## Week 1
 
-### 19 Oct 2019
+### 17 Sep 2023
 
-* *4 hours* Read the project guidance notes
-* *0.5 hour* Created GitLab repository and cloned the cookiecutter for the projects
-* *1 hour* Modified dissertation template, compiled  
+* *4 hours* Reading the course guide and project guidance
 
-## 20 Oct 2019
+### 18 Sep 2023
 
-* *1 hour* meeting with supervisor
-* *2 hours* writing initial version of test harness
+* *2 hour* Preparing resources for supervisor meeting
+
+## Week 2
+
+### 24 Sep 2023
+
+* *6 hour* Researching relevant papers
+* *30 min* Downloading appropriate tools e.g. Endnote
+*  *30 min* Setting up GitHub with the appropriate template and filling out time-tracking files
