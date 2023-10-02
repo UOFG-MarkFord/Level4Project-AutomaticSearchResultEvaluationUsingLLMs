@@ -29,3 +29,10 @@
 * *6 hours* Researching relevant papers
 * *30 mins* Downloading appropriate tools e.g. Endnote
 *  *30 mins* Setting up GitHub with the appropriate template and filling out time-tracking files
+  
+## Week 3
+
+### 1 Oct 2023
+
+* *2 hours* Researching relevant papers
+* *4 hours* Running and understanding relevant projects and experiments
