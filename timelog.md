@@ -49,7 +49,7 @@
 
 ### 5 Oct 2023
 
-* *6 hours* setting up the repository for execution on google collab
+* *4 hours* setting up the repository for execution on google collab
 
 ### 7 Oct 2023
 
