@@ -20,7 +20,15 @@ Week-by-week plan for the whole project. Update this as you go along.
 2. Outline methods to handle scenarios with multiple known relevant documents.
 3. Propose strategies for utilizing known non-relevant documents as signals.
 * **Week 3**
+- Explore and analyze datasets from the "One-Shot Labeling for Automatic Relevance Estimation" repository.
+- Examine datasets for usability and applicability in the project.
+- Troubleshoot technical issues related to Google Collab and understand its environment.
+- Start hands-on experimentation to enhance practical understanding.
 * **Week 4**
+- Focus on overcoming the "hard steps" including dealing with the runtime environment, data importation, and preparation issues in Google Collab.
+- Resolve issues related to running scripts and possible timeout/interrupt issues in Google Collab.
+- Begin experiments on replicating existing experiments with long documents, using documents in the 90th percentile of the existing datasets.
+- Engage in continuous correspondence with the supervisor regarding the challenges faced and gain insights on the next steps.
 * **Week 5**
 * **Week 6**
 * **Week 7**
