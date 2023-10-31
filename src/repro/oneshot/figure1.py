@@ -52,7 +52,7 @@ for name, model, under, rot in SYSTEMS:
         label.append(rel)
         pred.append(inf_qrel_map[qid, did])
     p, r, _ = precision_recall_curve(label, pred)
-    f1 = 2 * p * r / (p + r)
+    f1 = 2 * p * r / (p + r + 1e-16)
     mx = f1[2:-2].argmax() + 2 # f1 score undefined at bounds? Correct this.
     f1 = f1[mx]
     ap = average_precision_score(label, pred)
