@@ -1,8 +1,6 @@
 from glob import glob
 import setuptools
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
 
 def read(rel_path):
     import os
@@ -27,8 +25,6 @@ setuptools.setup(
     author="Sean MacAvaney",
     author_email="sean.macavaney@glasgow.ac.uk",
     description="a tool for automatically inferring query relevance assessments (qrels)",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
     url="https://github.com/seanmacavaney/autoqrels",
     include_package_data = True,
     packages=setuptools.find_packages(include=['autoqrels', 'autoqrels.*']),
