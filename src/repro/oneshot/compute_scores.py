@@ -10,9 +10,7 @@ if not pt.started():
     pt.init()
 
 DATASETS = {
-    'dl19': 'msmarco-passage/trec-dl-2019/judged',
-    'dl20': 'msmarco-passage/trec-dl-2020/judged',
-    'dl21': 'msmarco-passage-v2/trec-dl-2021/judged',
+    'dl19': 'msmarco-document/trec-dl-2019/judged',
 }
 
 def build_cache(labeler, dataset, irds):
@@ -71,10 +69,9 @@ def duoprompt(name, cache_path):
         del labeler
 
 SYSTEMS = {
-    'maxrep.bm25-128': maxrep_bm25,
-    'maxrep.tcthnp-128': maxrep_tcthnp,
+
     'duot5': duot5,
-    'duoprompt': duoprompt,
+
 }
 
 def main():
@@ -82,17 +79,11 @@ def main():
     parser.add_argument('system', choices=SYSTEMS.keys())
     parser.add_argument('--replace', action='store_true')
     args = parser.parse_args()
+    path = f'{args.system}.cache.json.gz'
+    if args.replace and os.path.exists(path):
+        os.unlink(f'{args.system}.cache.json.gz')
+    SYSTEMS[args.system](args.system, path)
 
-    # Define the output path in your Google Drive
-    drive_path = '/content/drive/MyDrive/'  # Modify this to your specific folder in Google Drive
-    output_path = os.path.join(drive_path, f'{args.system}.cache.json.gz')
-
-    # Check if the file exists and the replace flag is set, then delete the existing file
-    if args.replace and os.path.exists(output_path):
-        os.unlink(output_path)
-
-    # Call the selected system function with the new output path
-    SYSTEMS[args.system](args.system, output_path)
 
 if __name__ == '__main__':
     main()

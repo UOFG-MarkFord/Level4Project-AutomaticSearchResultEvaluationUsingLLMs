@@ -5,6 +5,8 @@ from pathlib import Path
 import pandas as pd
 import ir_datasets
 from autoqrels import Labeler
+import random
+
 
 
 class OneShotLabeler(Labeler):
@@ -72,4 +74,6 @@ class OneShotLabeler(Labeler):
             self._cache_dirty = False
 
     def _infer_oneshot(self, query_id: str, rel_doc_id: str, unk_doc_ids: List[str]) -> List[float]:
-        raise NotImplementedError() # implementation-specific
+        # Generating random relevance scores between 0 and 1 for each unknown document ID
+        relevance_scores = [random.random() for _ in unk_doc_ids]
+        return relevance_scores

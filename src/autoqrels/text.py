@@ -15,4 +15,4 @@ def query_text(dataset, query_ids, text_field):
     return get_text(dataset.queries, query_ids, text_field)
 
 def doc_text(dataset, doc_ids, text_field):
-    return get_text(dataset.docs, doc_ids, text_field)
+    return get_text(dataset.docs, doc_ids, ['title','body','url'])

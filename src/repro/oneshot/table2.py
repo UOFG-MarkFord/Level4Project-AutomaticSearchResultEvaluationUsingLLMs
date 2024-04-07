@@ -99,9 +99,8 @@ def calc_measures(Measure, runs, qrels):
 
 DATASETS = []
 for ds, dsid in tqdm([
-  ('dl19', 'msmarco-passage/trec-dl-2019'),
-  ('dl20', 'msmarco-passage/trec-dl-2020'),
-  ('dl21', 'msmarco-passage-v2/trec-dl-2021')], desc='reading runs'):
+  ('dl19', 'msmarco-document/trec-dl-2019'),
+  ], desc='reading runs'):
   runs = {}
   for run_id in os.listdir(f'{ds}-runs'):
     runs[run_id] = list(ir_measures.read_trec_run(f'{ds}-runs/{run_id}'))
@@ -114,11 +113,9 @@ for ds, dsid in tqdm([
 
 
 SYSTEMS = [
-  ('Non-relevant', autoqrels.DummyLabeler()),
-  ('MaxRep-BM25', autoqrels.oneshot.OneShotLabeler('maxrep.bm25-128.cache.json.gz')),
-  ('MaxRep-TCT', autoqrels.oneshot.OneShotLabeler('maxrep.tcthnp-128.cache.json.gz')),
-  ('DuoT5', autoqrels.oneshot.OneShotLabeler('duot5.cache.json.gz')),
-  ('DuoPrompt', autoqrels.oneshot.OneShotLabeler('duoprompt.cache.json.gz')),
+    ('Baseline Document', autoqrels.oneshot.OneShotLabeler('duot5Doc.cache.json.gz')),
+    ('Generic Summarization Model', autoqrels.oneshot.OneShotLabeler('duot5Abb.cache.json.gz')),
+    
 ]
 
 
@@ -130,34 +127,32 @@ MEASURES = [
 
 
 def main():
-  with tqdm(total=len(MEASURES) * len(DATASETS) * (len(SYSTEMS) + 1)) as pbar:
-    official_measure_map = {}
-    for m_name, OfficialMeasure, f_measure in MEASURES:
-      for ds, official_qrels, sparse_qrels, runs in DATASETS:
-        pbar.set_description(f'calculating official {ds} {m_name}')
-        official_measure_map[m_name, ds] = calc_measures(
-          OfficialMeasure, runs, official_qrels)
-        pbar.update()
+  
+  official_measure_map = {}
+  for m_name, OfficialMeasure, f_measure in MEASURES:
+    for ds, official_qrels, sparse_qrels, runs in DATASETS:
+      
+      official_measure_map[m_name, ds] = calc_measures(
+        OfficialMeasure, runs, official_qrels)
+      
 
-    for m_name, OfficialMeasure, inf_measure_fn in MEASURES:
-      for i, (provider_name, provider) in enumerate(SYSTEMS):
-        InfMeasure = inf_measure_fn(provider)
-        ev_map = {}
-        first = f'\\textbf{{{m_name}}}' if i == 0 else ''  # print measure on first line
-        for i, (ds, official_qrels, sparse_qrels, runs) in enumerate(DATASETS):
-          pbar.set_description(f'calculating {provider_name} {ds} {m_name}')
-          official_measures = official_measure_map[m_name, ds]
-          these_measures = calc_measures(InfMeasure, runs, sparse_qrels)
-          ev = eval(official_measures, these_measures)
-          for k, v in ev.items():
-            ev_map[f'{ds}_{k}'] = v
-          pbar.update()
-        tqdm.write('{first} & {provider_name}'
-              ' & {dl19_kendall:.3f} & {dl19_spearman:.3f} & {dl19_rbo:.3f} & {dl19_fnr:.3f} & {dl19_fpr:.3f}'  # noqa: E501
-              ' & {dl20_kendall:.3f} & {dl20_spearman:.3f} & {dl20_rbo:.3f} & {dl20_fnr:.3f} & {dl20_fpr:.3f}'  # noqa: E501
-              ' & {dl21_kendall:.3f} & {dl21_spearman:.3f} & {dl21_rbo:.3f} & {dl21_fnr:.3f} & {dl21_fpr:.3f}'  # noqa: E501
-              ' \\\\'.format(first=first, provider_name=provider_name, **ev_map))
-      tqdm.write('\\midrule')
+  for m_name, OfficialMeasure, inf_measure_fn in MEASURES:
+    for i, (provider_name, provider) in enumerate(SYSTEMS):
+      InfMeasure = inf_measure_fn(provider)
+      ev_map = {}
+      first = f'\\textbf{{{m_name}}}' if i == 0 else ''  # print measure on first line
+      for i, (ds, official_qrels, sparse_qrels, runs) in enumerate(DATASETS):
+        
+        official_measures = official_measure_map[m_name, ds]
+        these_measures = calc_measures(InfMeasure, runs, sparse_qrels)
+        ev = eval(official_measures, these_measures)
+        for k, v in ev.items():
+          ev_map[f'{ds}_{k}'] = v
+        
+        print('{first} & {provider_name}'
+        ' & {dl19_kendall:.3f} & {dl19_spearman:.3f} & {dl19_rbo:.3f} & {dl19_fnr:.3f} & {dl19_fpr:.3f}'  # noqa: E501
+        ' \\\\'.format(first=first, provider_name=provider_name, **ev_map))
+    print('\\midrule')
 
 
 if __name__ == '__main__':
